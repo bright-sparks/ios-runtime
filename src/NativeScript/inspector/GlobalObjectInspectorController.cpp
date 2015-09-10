@@ -43,7 +43,6 @@
 #include <JavaScriptCore/ScriptCallStack.h>
 #include <JavaScriptCore/ScriptCallStackFactory.h>
 #include <wtf/Stopwatch.h>
-#include "GlobalObjectDebuggerAgent.h"
 #include "InspectorPageAgent.h"
 #include "InspectorTimelineAgent.h"
 
@@ -240,6 +239,8 @@ void GlobalObjectInspectorController::frontendInitialized() {
     if (m_isAutomaticInspection)
         m_globalObject.inspectorDebuggable().unpauseForInitializedInspector();
 #endif
+    
+    m_debuggerAgent->frontendInitialized();
 }
 
 Ref<Stopwatch> GlobalObjectInspectorController::executionStopwatch() {

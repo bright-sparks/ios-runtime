@@ -54,6 +54,8 @@ public:
     // are sent to the console outside of the API boundary or console object.
     virtual void muteConsole() override {}
     virtual void unmuteConsole() override {}
+    
+    void frontendInitialized();
 
 private:
     Inspector::JSGlobalObjectScriptDebugServer m_scriptDebugServer;

@@ -31,6 +31,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>
 #include <wtf/text/WTFString.h>
+#include "GlobalObjectDebuggerAgent.h"
 
 #if ENABLE(INSPECTOR_ALTERNATE_DISPATCHERS)
 #include <JavaScriptCore/AugmentableInspectorController.h>
@@ -122,7 +123,7 @@ private:
     std::unique_ptr<JSC::ConsoleClient> m_consoleClient;
     Inspector::InspectorAgent* m_inspectorAgent;
     Inspector::InspectorConsoleAgent* m_consoleAgent;
-    Inspector::InspectorDebuggerAgent* m_debuggerAgent;
+    GlobalObjectDebuggerAgent* m_debuggerAgent;
     Inspector::InspectorTimelineAgent* m_timelineAgent;
     Inspector::AgentRegistry m_agents;
     Inspector::FrontendChannel* m_frontendChannel;

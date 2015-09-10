@@ -48,10 +48,19 @@ GlobalObjectDebuggerAgent::GlobalObjectDebuggerAgent(InjectedScriptManager* inje
 
 void GlobalObjectDebuggerAgent::enable(ErrorString& errorString) {
     InspectorDebuggerAgent::enable(errorString);
-
+    
+//    ResourceManager& resourceManager = ResourceManager::getInstance();
+//    WTF::HashMap<WTF::String, WTF::RefPtr<JSC::SourceProvider>>& sourceProviders = resourceManager.sourceProviders();
+//
+//    for (auto resource : sourceProviders) {
+//        m_globalObject->debugger()->sourceParsed(m_globalObject->globalExec(), resource.value.get(), -1, WTF::emptyString());
+//    }
+}
+    
+void GlobalObjectDebuggerAgent::frontendInitialized() {
     ResourceManager& resourceManager = ResourceManager::getInstance();
     WTF::HashMap<WTF::String, WTF::RefPtr<JSC::SourceProvider>>& sourceProviders = resourceManager.sourceProviders();
-
+    
     for (auto resource : sourceProviders) {
         m_globalObject->debugger()->sourceParsed(m_globalObject->globalExec(), resource.value.get(), -1, WTF::emptyString());
     }
