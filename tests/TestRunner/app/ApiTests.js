@@ -446,6 +446,14 @@ describe(module.id, function () {
         }).toThrowError(ReferenceError, /TNSUnavailableConstant/);
     });
 
+    it("returns retained", function () {
+        expect(functionReturnsNSRetained().retainCount()).toBe(1);
+        expect(functionReturnsCFRetained().retainCount()).toBe(1);
+        expect(TNSReturnsRetained.methodReturnsNSRetained().retainCount()).toBe(1);
+        expect(TNSReturnsRetained.methodReturnsCFRetained().retainCount()).toBe(1);
+        expect(CFCopyHomeDirectoryURL().retainCount()).toBe(1);
+    });
+
     it("ApiIterator", function () {
         var counter = 0;
 
